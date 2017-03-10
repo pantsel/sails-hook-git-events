@@ -14,5 +14,11 @@
   },
   "devDependencies": {
     "sails": "~0.12.11"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pantsel/sails-hook-git-events.git"
+  },
+  "author": "Panagis Tselentis",
+  "license": "MIT"
 }
