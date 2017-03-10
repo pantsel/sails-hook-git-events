@@ -25,39 +25,6 @@ module.exports = function gitUpdateHook(sails) {
             // ToDo
         },
 
-        git : {
-            /**
-             * Function that performs git pull
-             * -------------------------------
-             * Update repo and print messages. When there are changes, restart the app
-             */
-            pull : function() {
-                require('simple-git')()
-                  .then(function() {
-                      sails.log('Hook:git-events => Starting pull...');
-                  })
-                  .pull(function(err, update) {
-                      sails.log("Hook:git-events => pull results:",update)
-                      working = false
-                      if(update && update.summary.changes) {
-                          sails.log("Hook:git-events => Restarting app")
-                          var cmd = spawn('npm' + ( isWin ? '.cmd' : '' ),
-                              [
-                                  "restart"
-                              ],
-                              {cwd: process.cwd() ,stdio: "inherit"});
-                          cmd.on('exit', function(code){
-                              sails.log(code);
-                          });
-                      }
-                  })
-                  .then(function() {
-                      sails.log('Hook:git-events => pull done.');
-                      working = false
-                  });
-          }
-        },
-
         /**
          * @param {Function}  next  Callback function to call after all is done
          */
@@ -88,23 +55,6 @@ module.exports = function gitUpdateHook(sails) {
             var handlerFn = function(data){
                 sails.log("Hook:git-events => on event",data)
                 sails.emit('git-event',data)
-                //if(!working && data.event && data.event == 'tag-push') {
-                //    switch (data.event) {
-                //        case "push":
-                //            break;
-                //        case "tag-push":
-                //            self.git.pull()
-                //            break;
-                //        case "comments":
-                //            break;
-                //        case "issues":
-                //            break;
-                //        case "merge-request":
-                //            break;
-                //        default:
-                //            sails.log("Default event")
-                //    }
-                //}
             }
 
             socket.on('connect', function(){
