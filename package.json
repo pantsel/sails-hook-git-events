@@ -1,0 +1,18 @@
+{
+  "name": "sails-hook-git-events",
+  "version": "0.0.0",
+  "description": "Listen to git web hook events",
+  "main": "index.js",
+  "sails": {
+    "isHook": true,
+    "hookName": "gitevents"
+  },
+  "dependencies": {
+    "sails.io.js": "^1.1.5",
+    "simple-git": "^1.67.0",
+    "socket.io-client": "^1.7.3"
+  },
+  "devDependencies": {
+    "sails": "~0.12.11"
+  }
+}
