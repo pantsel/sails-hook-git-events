@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-git-events",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Listen to git web hook events",
   "main": "index.js",
   "sails": {
