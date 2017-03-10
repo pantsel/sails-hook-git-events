@@ -83,7 +83,7 @@ module.exports = function gitUpdateHook(sails) {
             var self = this;
 
             // Wait for sails orm hook to be loaded
-            var eventsToWaitFor = ['hook:orm:loaded'];
+            var eventsToWaitFor = ['hook:sockets:loaded'];
             sails.after(eventsToWaitFor, function onAfter() {
                 self.process(next);
             });
